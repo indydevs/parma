@@ -1,0 +1,6 @@
+<div class="well">
+  <h3>Github user</h3>
+  <h4><%= @current_user.name %></h4>
+  <h4>e-mail: <%= @current_user.email %></h4>
+</div>
+
