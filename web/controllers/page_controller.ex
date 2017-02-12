@@ -3,7 +3,7 @@ defmodule Parma.PageController do
   plug EnsureAuthenticated, handler: __MODULE__
 
   def index(conn, _params, current_user, _claims) do
-    render conn, "index.html", current_user: current_user
+    render conn, "index.html", current_user: current_user |> Parma.Repo.preload(:repositories)
   end
 
   def unauthenticated(conn, _params) do

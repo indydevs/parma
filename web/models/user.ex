@@ -8,6 +8,7 @@ defmodule Parma.User do
     field :email, :string
 
     has_many :authorizations, Parma.Authorization
+    has_many :repositories, Parma.Repository
 
     timestamps()
   end
@@ -16,22 +17,10 @@ defmodule Parma.User do
   @optional_fields ~w()a
 
   def registration_changeset(model, params \\ :empty) do
-    model
-    |>cast(params, ~w(email name)a)
+    user = model
+    |> cast(params, ~w(email name)a)
     |> validate_required(@required_fields)
-  end
-
-  @doc """
-  Builds a changeset based on the `struct` and `params`.
-  """
-  def changeset(struct, params \\ %{}) do
-    struct
-    |> cast(params, [:name, :email])
-    |> validate_required([:name, :email])
-  end
-
-  def repositories(model) do
-    Tentacat.Repositories.list_mine(github_client(model))
+    user
   end
 
   def github_client(model) do

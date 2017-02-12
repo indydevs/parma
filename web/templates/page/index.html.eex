@@ -4,8 +4,8 @@
   <h4>e-mail: <%= @current_user.email %></h4>
   <h4>Repositories:</h4>
   <ul>
-  <%= for repo <- Parma.User.repositories(@current_user) do %>
-    <li><%=repo["owner"]["login"]%>/<%= repo["name"] %></li>
+  <%= for repo <- @current_user.repositories do %>
+    <li><%=repo.meta["owner"]["login"]%>/<%= repo.name %></li>
   <% end %>
   </ul>
 </div>
