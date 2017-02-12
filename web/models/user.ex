@@ -29,4 +29,13 @@ defmodule Parma.User do
     |> cast(params, [:name, :email])
     |> validate_required([:name, :email])
   end
+
+  def repositories(model) do
+    Tentacat.Repositories.list_mine(github_client(model))
+  end
+
+  def github_client(model) do
+    token = Parma.Repo.get_by(Parma.Authorization, user_id: model.id).token
+    Tentacat.Client.new(%{access_token: token})
+  end
 end

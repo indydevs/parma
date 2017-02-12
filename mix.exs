@@ -28,6 +28,7 @@ defmodule Parma.Mixfile do
                     :gettext,
                     :phoenix_ecto,
                     :rethinkdb_ecto,
+                    :tentacat,
                     :ueberauth,
                     :ueberauth_github
                     ]
@@ -50,6 +51,7 @@ defmodule Parma.Mixfile do
      {:rethinkdb_ecto, "~> 0.6"},
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
+     {:tentacat, "~> 0.5"},
      {:ueberauth, "~> 0.4"},
      {:ueberauth_github, "~> 0.4"},
      {:gettext, "~> 0.11"},
