@@ -9,6 +9,8 @@ cache:
   directories:
     - _build
     - deps
+services:
+  - redis-server
 install:
   - mix local.hex --force
   - mix local.rebar --force
