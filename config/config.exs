@@ -29,7 +29,6 @@ config :guardian, Guardian,
   verify_issuer: true,
   serializer: Parma.GuardianSerializer,
   secret_key: to_string(Mix.env),
-  hooks: GuardianDb,
   permissions: %{
     default: [
       :read_profile,
@@ -38,9 +37,6 @@ config :guardian, Guardian,
       :revoke_token,
     ],
   }
-config :guardian_db, GuardianDb,
-  repo: Parma.Repo,
-  sweep_interval: 60 # 60 minutes
 config :ueberauth, Ueberauth,
   providers: [
     github: { Ueberauth.Strategy.Github,  [default_scope: "user,repo,notifications,read:repo_hook,write:repo_hook"] }
