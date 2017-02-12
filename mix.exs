@@ -7,6 +7,8 @@ defmodule Parma.Mixfile do
      elixir: "~> 1.2",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
+     test_coverage: [tool: ExCoveralls],
+     preferred_cli_env: ["coveralls": :test, "coveralls.detail": :test, "coveralls.post": :test, "coveralls.html": :test],
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      aliases: aliases(),
@@ -59,7 +61,8 @@ defmodule Parma.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:exredis, ">= 0.1.1"},
-     {:toniq, "~> 1.0"}
+     {:toniq, "~> 1.0"},
+     {:excoveralls, "~> 0.5", only: :test},
     ]
   end
 
