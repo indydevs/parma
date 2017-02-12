@@ -9,9 +9,10 @@ defmodule UserInitialization do
   end
 
   def build_repo(user, data) do
+     application_id = Parma.Repo.get_by(Parma.Application, name: "github").id
      Repository.changeset(
        Ecto.build_assoc(user, :repositories),
-       %{name: data["name"], source: "github", source_id: Integer.to_string(data["id"]), meta: data }
+       %{name: data["name"], application_id: application_id, source_id: Integer.to_string(data["id"]), meta: data }
      )
   end
 end
