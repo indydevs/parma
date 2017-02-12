@@ -7,6 +7,9 @@ defmodule Parma.Application do
     timestamps()
   end
 
+  @required_fields ~w(name)a
+  @optional_fields ~w()a
+
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """

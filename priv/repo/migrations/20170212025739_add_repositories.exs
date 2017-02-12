@@ -6,7 +6,7 @@ defmodule Parma.Repo.Migrations.AddRepositories do
       add :id, :uuid, primary_key: true
       add :name, :string
       add :meta, :map
-      add :application_id, :integer
+      add :application_id, references(:applications, on_delete: :delete_all, type: :uuid)
       add :source_id, :string
       add :enabled, :boolean, default: false
       add :user_id, references(:users, on_delete: :delete_all, type: :uuid)

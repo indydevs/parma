@@ -8,6 +8,9 @@ defmodule Parma.ParmaTransaction do
     timestamps()
   end
 
+  @required_fields ~w(parma_account_id transaction_amount)a
+  @optional_fields ~w()a
+
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """
