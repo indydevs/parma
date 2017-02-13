@@ -18,6 +18,6 @@ defmodule Parma.ParmaAccount do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:user_id, :repository_id, :total])
-    |> validate_required([:user_id, :repository_id, :total])
+    |> validate_required(@required_fields)
   end
 end

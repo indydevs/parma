@@ -18,6 +18,6 @@ defmodule Parma.PullRequest do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:source_id, :author_id, :total_parma])
-    |> validate_required([:source_id, :author_id, :total_parma])
+    |> validate_required(@required_fields)
   end
 end

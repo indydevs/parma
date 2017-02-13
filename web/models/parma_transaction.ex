@@ -17,6 +17,6 @@ defmodule Parma.ParmaTransaction do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:parma_account_id, :transaction_amount])
-    |> validate_required([:parma_account_id, :transaction_amount])
+    |> validate_required([@required_fields)
   end
 end

@@ -16,6 +16,6 @@ defmodule Parma.Application do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:name])
-    |> validate_required([:name])
+    |> validate_required(@required_fields)
   end
 end
