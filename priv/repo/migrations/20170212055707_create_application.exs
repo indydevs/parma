@@ -9,5 +9,6 @@ defmodule Parma.Repo.Migrations.CreateApplication do
       timestamps()
     end
     create index(:applications, [:application_id])
+    create unique_index(:applications, [:name])
   end
 end

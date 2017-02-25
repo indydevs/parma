@@ -21,7 +21,12 @@ This will (should) also install Elrang
 
   ```
     mix ecto.create
-    mix ecto.mgirate
+    mix ecto.migrate
+  ```
+
+  * Run database seeds
+  ```
+    mix run priv/repo/seeds.exs
   ```
 
 ### Hex (Package Manager)

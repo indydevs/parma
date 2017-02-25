@@ -7,9 +7,9 @@ defmodule Parma.Repository do
     field :name, :string
     field :meta, :map
     field :enabled, :boolean
-    field :source, :string
     field :source_id, :string
 
+    belongs_to :application, Parma.Application
     belongs_to :user, Parma.User
     timestamps()
   end

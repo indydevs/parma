@@ -1,6 +1,8 @@
 defmodule Parma.Application do
   use Parma.Web, :model
 
+  @primary_key {:id, :binary_id, autogenerate: false}
+  @foreign_key_type :binary_id
   schema "applications" do
     field :name, :string
 
@@ -16,6 +18,7 @@ defmodule Parma.Application do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:name])
+    |> unique_constraint(:name)
     |> validate_required(@required_fields)
   end
 end
