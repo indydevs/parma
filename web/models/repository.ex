@@ -14,7 +14,7 @@ defmodule Parma.Repository do
     timestamps()
   end
 
-  @required_fields ~w(name meta source source_id)a
+  @required_fields ~w(name meta source_id)a
   @optional_fields ~w()a
 
   def changeset(model, params \\ :empty) do
