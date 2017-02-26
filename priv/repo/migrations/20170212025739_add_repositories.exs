@@ -9,7 +9,6 @@ defmodule Parma.Repo.Migrations.AddRepositories do
       add :application_id, references(:applications, on_delete: :delete_all, type: :uuid)
       add :source_id, :string
       add :enabled, :boolean, default: false
-      add :user_id, references(:users, on_delete: :delete_all, type: :uuid)
       timestamps()
     end
     create index(:repositories, [:source, :source_id])

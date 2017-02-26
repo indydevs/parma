@@ -10,11 +10,11 @@ defmodule Parma.Repository do
     field :source_id, :string
 
     belongs_to :application, Parma.Application
-    belongs_to :user, Parma.User
+    many_to_many :users, Parma.User, join_through: "users_repositories"
     timestamps()
   end
 
-  @required_fields ~w(name meta source_id)a
+  @required_fields ~w(name meta source_id application_id)a
   @optional_fields ~w()a
 
   def changeset(model, params \\ :empty) do
