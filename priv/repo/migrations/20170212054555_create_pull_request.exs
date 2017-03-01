@@ -2,7 +2,7 @@ defmodule Parma.Repo.Migrations.CreatePullRequest do
   use Ecto.Migration
 
   def change do
-    create table(:pull_requests) do
+    create table(:pull_requests, primary_key: false) do
       add :id, :uuid, primary_key: true
       add :source_id, :integer
       add :repository_id, references(:repositories, on_delete: :delete_all, type: :uuid)

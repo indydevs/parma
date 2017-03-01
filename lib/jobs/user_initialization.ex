@@ -30,8 +30,8 @@ defmodule UserInitialization do
 
   def create_user_repository(repository, user) do
     user = user |> Repo.preload(:repositories)
-    repository =  repository.preload(:users)
-    changeset = Ecto.Changeset.change(user) |> Ecto.Changeset.put_assoc(:organizations, [repository])
+    repository =  repository |> Repo.preload(:users)
+    changeset = Ecto.Changeset.change(user) |> Ecto.Changeset.put_assoc(:repositories, [repository])
     Repo.update!(changeset)
   end
 end
