@@ -8,7 +8,7 @@ defmodule Parma.User do
     field :email, :string
 
     has_many :authorizations, Parma.Authorization
-    many_to_many :repositories, Parma.Repository, join_through: "repositories_users"
+    many_to_many :repositories, Parma.Repository, join_through: "users_repositories"
 
     timestamps()
   end
