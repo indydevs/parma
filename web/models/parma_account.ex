@@ -1,6 +1,7 @@
 defmodule Parma.ParmaAccount do
   use Parma.Web, :model
 
+  @primary_key {:id, :binary_id, autogenerate: true}
   schema "parma_accounts" do
     field :user_id, :integer
     field :repository_id, :integer

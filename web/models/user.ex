@@ -1,7 +1,7 @@
 defmodule Parma.User do
   use Parma.Web, :model
 
-  @primary_key {:id, :binary_id, autogenerate: false}
+  @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "users" do
     field :name, :string

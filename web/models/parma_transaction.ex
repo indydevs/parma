@@ -1,6 +1,7 @@
 defmodule Parma.ParmaTransaction do
   use Parma.Web, :model
 
+  @primary_key {:id, :binary_id, autogenerate: true}
   schema "parma_transactions" do
     field :parma_account_id, :integer
     field :transaction_amount, :integer

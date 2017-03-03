@@ -8,8 +8,3 @@ config :parma, Parma.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
-
-# Configure your database
-config :parma, Parma.Repo,
-  adapter: RethinkDB.Ecto,
-  database: :parma_test

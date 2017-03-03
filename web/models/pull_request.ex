@@ -1,6 +1,7 @@
 defmodule Parma.PullRequest do
   use Parma.Web, :model
 
+  @primary_key {:id, :binary_id, autogenerate: true}
   schema "pull_requests" do
     field :source_id, :integer
     field :author_id, :integer

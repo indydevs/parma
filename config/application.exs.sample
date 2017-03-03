@@ -1,0 +1,38 @@
+use Mix.Config
+
+Mix.Config.persist(
+    parma: [
+        dev: %{
+            db_host: "localhost",
+            db_name: "parma_dev",
+            db_user: "postgres",
+            db_password: "~",
+            github_client_id: "28c45b976937e3e07cf1",
+            github_client_secret: "cec5c12b76840faca385c657f0fc4e1000196da9"
+        },
+        test: %{
+            db_host: "localhost",
+            db_name: "parma_test",
+            db_user: "postgres",
+            db_password: "~",
+        },
+        dev_server: %{
+            db_host: "",
+            db_name: "parma_dev_server",
+            db_user: "postgres",
+            db_password: "~",
+        },
+        staging: %{
+            db_host: "",
+            db_name: "",
+            db_user: "",
+            db_password: "",
+        },
+        production: %{
+            db_host: "",
+            db_name: "",
+            db_user: "",
+            db_password: "",
+        }
+    ]
+)
