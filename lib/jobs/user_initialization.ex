@@ -29,10 +29,10 @@ defmodule UserInitialization do
   end
 
   def create_user_repository(repository, user) do
-    changeset = Parma.Repo.preload(user, :repositories)
-    |> Repo.preload(:authorizations)
-    |> User.changeset(%{})
-    |> Ecto.Changeset.put_assoc(:repositories, [repository])
-    Repo.insert!(changeset)
+    changeset = repository
+    |> Repo.preload(:users)
+    |> Repository.changeset(%{})
+    |> Ecto.Changeset.put_assoc(:users, [user])
+    Repo.update!(changeset)
   end
 end
