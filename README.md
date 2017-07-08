@@ -1,3 +1,5 @@
+![parma logo](https://s3-ap-southeast-1.amazonaws.com/parma-img/parma_logo_with_text.png)
+
 # parma
 
 ## Installation
@@ -41,7 +43,7 @@ This will (should) also install Elrang
   * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
   * Install Node.js dependencies with `npm install`
   * Use the right version of node by doing `nvm use 6.2.2`
-  * Start Phoenix endpoint with `mix phoenix.server`
+  * Start Phoenix endpoint with `iex -S mix phoenix.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
