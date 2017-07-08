@@ -1,5 +1,4 @@
-![parma logo](https://s3-ap-southeast-1.amazonaws.com/parma-img/parma_logo_with_text.png)
-
+![parma logo](https://s3-ap-southeast-1.amazonaws.com/parma-img/parma_logo_mid.png)
 # parma
 
 ## Installation
