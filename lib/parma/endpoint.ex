@@ -39,4 +39,15 @@ defmodule Parma.Endpoint do
     signing_salt: "SPVyfKEl"
 
   plug Parma.Router
+
+  def child_spec(_) do
+    %{
+      id: __MODULE__,
+      start: {__MODULE__, :start_link, []},
+      type: :worker,
+      restart: :permanent,
+      shutdown: 500
+    }
+  end
+
 end
