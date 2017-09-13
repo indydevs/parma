@@ -1,0 +1,12 @@
+use Mix.Config
+
+Mix.Config.persist(
+    parma: [
+        test: %{
+            db_host: "localhost",
+            db_name: "travis_ci_test",
+            db_user: "postgres",
+            db_password: "~",
+        }
+    ]
+)
