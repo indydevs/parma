@@ -10,15 +10,14 @@ defmodule Parma.PullRequest do
     timestamps()
   end
 
-  @required_fields ~w(source_id author_id total_parma)a
-  @optional_fields ~w()a
+  @required_fields ~w(source_id author_id total_parma)a  
 
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:source_id, :author_id, :total_parma])
+    |> cast(params, @required_fields)
     |> validate_required(@required_fields)
   end
 end
