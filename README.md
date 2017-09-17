@@ -1,48 +1,51 @@
-![parma logo](https://s3-ap-southeast-1.amazonaws.com/parma-img/parma_logo_mid.png)
-# parma
+![parma logo](https://cldup.com/8ULBQyooFe.png)
 
 ## Installation
-### Pre Requisites
-
-* `brew install rethinkdb`
-* `brew services start rethinkdb`
-* Create a github oauth application and set `GITHUB_CLIENT_ID` & `GITHUB_CLIENT_SECRET`
 
 ### Elixir
 
-  ```
-  $ brew install elixir
-  ```
+At the time of writing, Elixir 1.5.0 was the latest. Unfortunately, homebrew only has the latest version of 
+Elixir. If the latest is not `1.5.0` then please [install Elixir from source](https://elixir-lang.org/install.html#compiling-from-source-unix-and-mingw)
 
-This will (should) also install Elrang
+```
+$ brew install elixir
+```
+
+This should also install erlang OTP for you.
 
 ### Database
 
-  * Create database and run migrations
+```
+$ brew install postgresql
+```
 
-  ```
-    mix ecto.create
-    mix ecto.migrate
-  ```
-
-  * Run database seeds
-  ```
-    mix run priv/repo/seeds.exs
-  ```
+*brew should also star the postgre service automaticaly*
 
 ### Hex (Package Manager)
 
-  ```
-  $ mix local.hex
-  ```
+```
+$ mix local.hex
+```
 
 ### App
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
-  * Install Node.js dependencies with `npm install`
-  * Use the right version of node by doing `nvm use 6.2.2`
-  * Start Phoenix endpoint with `iex -S mix phoenix.server`
+* Copy the application sample file `cp config/application.exs.sample application.exs`
+* Configure your database credentials in `config/application.exs`
+* Install dependencies with `mix deps.get`
+* Create, migrate and seed your database with `mix ecto.setup`
+* Install Node.js dependencies with `npm install`
+* Use the right version of node by doing `nvm use 6.2.2`
+
+### Github Setup
+
+* [Create a github oauth application](https://github.com/settings/applications/new) 
+* Use `http://localhost:4000/` as your **Authorization callback URL**
+* Once done, copy the `client_id` and `client_secret` and paste it in `config/application.exs`
+  
+### Start Server
+Start Phoenix endpoint with `mix phoenix.server`
+
+If you want to run in debug mode, start the server with `iex -S mix phoenix.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 

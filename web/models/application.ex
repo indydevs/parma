@@ -18,6 +18,6 @@ defmodule Parma.Application do
     struct
     |> cast(params, @required_fields)
     |> validate_required(@required_fields)
-    |> unique_constraint([:name])    
+    |> unique_constraint(:name)    
   end
 end
