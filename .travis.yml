@@ -11,15 +11,14 @@ cache:
     - deps
 services:
   - redis-server
+before_install:  
+  - bash .travis/postgre_setup.sh
 install:
   - mix local.hex --force
   - mix local.rebar --force
   - mix deps.get
 env:
   - MIX_ENV=test
-before_script:
-  - kerl list installations
-  - bash .travis/postgre_setup.sh
 script:
   - mix ecto.create
   - mix ecto.migrate
