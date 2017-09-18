@@ -33,7 +33,7 @@ defmodule Parma.UserFromAuth do
   end
 
   # All the other providers are oauth so should be good
-  defp validate_auth_for_registration(auth), do: :ok
+  defp validate_auth_for_registration(_auth), do: :ok
 
   defp validate_pw_length(pw, email) when is_binary(pw) do
     if String.length(pw) >= 8 do
@@ -47,7 +47,7 @@ defmodule Parma.UserFromAuth do
     case Regex.run(~r/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/, email) do
       nil ->
         {:error, :invalid_email}
-      [email] ->
+      [_email] ->
         :ok
     end
   end
@@ -94,24 +94,28 @@ defmodule Parma.UserFromAuth do
     end
   end
 
-  defp create_user_from_auth(auth, current_user, repo) do
-    user = current_user
-    if !user, do: user = repo.get_by(User, email: auth.info.email)
-    if !user do
-      user = create_user(auth, repo)
-      Toniq.enqueue(UserInitialization, user: user)
-    end
+  defp create_user_from_auth(auth, current_user, repo) do    
+    user = current_user || repo.get_by(User, email: auth.info.email)    
+    user = 
+      case user do
+        nil -> create_user(auth, repo)
+        _ -> user
+      end    
     authorization_from_auth(user, auth, repo)
     {:ok, user}
   end
 
   defp create_user(auth, repo) do
     name = name_from_auth(auth)
-    result = User.registration_changeset(%User{}, scrub(%{email: auth.info.email, name: name}))
-    |> repo.insert
+    result = 
+      User.registration_changeset(%User{}, scrub(%{email: auth.info.email, name: name}))
+      |> repo.insert
     case result do
-      {:ok, user} -> user
-      {:error, reason} -> repo.rollback(reason)
+      {:ok, user} -> 
+        Toniq.enqueue(UserInitialization, user: user)
+        user
+      {:error, reason} -> 
+        repo.rollback(reason)
     end
   end
 
@@ -183,7 +187,7 @@ defmodule Parma.UserFromAuth do
       auth.info.name
     else
       [auth.info.first_name, auth.info.last_name]
-      |> Enum.filter(&(&1 != nil and String.strip(&1) != ""))
+      |> Enum.filter(&(&1 != nil and String.trim(&1) != ""))
       |> Enum.join(" ")
     end
   end
@@ -212,8 +216,8 @@ defmodule Parma.UserFromAuth do
   # We don't have any nested structures in our params that we are using scrub with so this is a very simple scrub
   defp scrub(params) do
     result = Enum.filter(params, fn
-      {key, val} when is_binary(val) -> String.strip(val) != ""
-      {key, val} when is_nil(val) -> false
+      {_key, val} when is_binary(val) -> String.trim(val) != ""
+      {_key, val} when is_nil(val) -> false
       _ -> true
     end)
     |> Enum.into(%{})

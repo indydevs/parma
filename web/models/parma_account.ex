@@ -11,7 +11,6 @@ defmodule Parma.ParmaAccount do
   end
 
   @required_fields ~w(repository_id user_id total)a
-  @optional_fields ~w()a
 
   @doc """
   Builds a changeset based on the `struct` and `params`.
