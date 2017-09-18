@@ -1,16 +1,18 @@
 language: elixir
 elixir:
-  - 1.3.2
+  - 1.5.0
 otp_release:
-  - 18.2
+  - 19.0
 addons:
-  rethinkdb: "2.3"
+  postgresql: 9.5
 cache:
   directories:
     - _build
     - deps
 services:
   - redis-server
+before_install:  
+  - bash .travis/postgre_setup.sh
 install:
   - mix local.hex --force
   - mix local.rebar --force

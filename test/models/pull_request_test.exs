@@ -3,7 +3,7 @@ defmodule Parma.PullRequestTest do
 
   alias Parma.PullRequest
 
-  @valid_attrs %{author_id: 42, calculated_parma: 42, source_id: 42}
+  @valid_attrs %{author_id: 42, total_parma: 42, source_id: 42}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do
