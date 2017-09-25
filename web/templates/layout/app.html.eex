@@ -11,8 +11,7 @@
   <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
 </head>
 
-<body>
-
+<body class="has-navbar">
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -40,7 +39,7 @@
   </div>
 </nav>
 
-<div class="container">
+<div class="container navbar-margin">
   <header class="header">
     <% if get_flash(@conn, :info) do %>
         <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>

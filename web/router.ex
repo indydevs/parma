@@ -30,4 +30,9 @@ defmodule Parma.Router do
     get "/:identity/callback", AuthController, :callback
     post "/:identity/callback", AuthController, :callback
   end
+
+  scope "/repositories", Parma do
+    pipe_through [:browser, :browser_auth]
+    get "/", RepositoryController, :index
+  end
 end

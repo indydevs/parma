@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        <ul class="col-md-6 col-xs-10">
+            <%= for repo <- repositories(@user_repositories) do %>
+                <li>
+                    <%= repo.name %>
+                    <%= if repo.admin == true do %>
+                        <input type="radio" />
+                    <% end %>
+                </li>
+            <% end %>
+        </div>
+    </div>
+</div>
