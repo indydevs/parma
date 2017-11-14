@@ -50,6 +50,8 @@ defmodule Parma.Mixfile do
      {:exredis, ">= 0.1.1"},
      {:toniq, "~> 1.0"},
      {:excoveralls, "~> 0.5", only: :test},
+     {:ex_machina, "~> 2.1"},
+     {:faker, "~> 0.9"}
     ]
   end
 
