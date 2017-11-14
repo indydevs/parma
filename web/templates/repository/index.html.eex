@@ -1,11 +1,15 @@
 <div class="container">
     <div class="row">
-        <ul class="col-md-6 col-xs-10">
+        <ul class="col-md-6 col-xs-10 no-list">
             <%= for repo <- repositories(@user_repositories) do %>
-                <li>
-                    <%= repo.name %>
+                <li class="repo">
+                    <div class="inline">
+                        <%= repo.name %>
+                    </div>                    
                     <%= if repo.admin == true do %>
-                        <input type="radio" />
+                        <div class="pull-right">
+                            <input type="checkbox" data-toggle="toggle" data-size="small" data-on="Enabled" data-off="Disabled"/>
+                        </div>
                     <% end %>
                 </li>
             <% end %>

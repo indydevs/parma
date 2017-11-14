@@ -5,7 +5,7 @@ defmodule Parma.RepositoryController do
     plug :set_current_user
 
     def index(conn, _params, current_user, _claims) do
-      user_repositories = 
+      user_repositories =
         current_user
         |> Parma.Repo.preload(:repositories)
         |> Map.get(:repositories)

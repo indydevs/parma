@@ -1,0 +1,10 @@
+.repo {
+    padding: 15px 0; 
+    height: 50px; 
+    width: 100%;
+    border-bottom: 1px solid #efefef;
+}
+
+.repo div {
+    vertical-align: middle;
+}
