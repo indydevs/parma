@@ -1,4 +1,7 @@
 @import "bootstrap";
+@import "bootstamp-toggle.min.css";
+@import "pages/repositories";
+
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
 
 body{
@@ -6,4 +9,20 @@ body{
 }
 .navbar-margin{
     padding-top: 70px;
+}
+.navbar-brand{
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    img{
+        width: 120px;
+    }
+}
+
+ul.no-list{
+    list-style: none;
+}
+
+.inline{
+    display: inline;
 }
