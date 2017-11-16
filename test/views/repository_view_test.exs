@@ -2,10 +2,12 @@ defmodule Parma.RepositoryViewTest do
   use Parma.ConnCase, async: true
   import Parma.Factory
 
-  test "#respositories gives a map of repo name and admin access" do
+  test "#respositories gives a map of repo details" do
     repos = build_list(2, :repository)
     expected_result = Enum.map(repos, fn(repo) ->
       %{
+          id: repo.id,
+          enabled: repo.enabled,
           name: repo.name,
           admin: true
       }

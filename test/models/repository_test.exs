@@ -1,5 +1,6 @@
 defmodule Parma.RepositoryTest do
   use Parma.ModelCase
+  use Parma.SetupCase
   import Parma.Factory
 
   alias Parma.Repository

@@ -1,5 +1,6 @@
 defmodule Parma.RepositoryControllerTest do
     use Parma.ConnCase
+    use Parma.SetupCase
     use Parma.AuthHelper
     import Parma.Factory
 
