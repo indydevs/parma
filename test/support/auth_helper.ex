@@ -4,13 +4,6 @@ defmodule Parma.AuthHelper do
   """
   defmacro __using__(_) do
     quote do
-      def build_authorized_conn(%Parma.User{} = user) do
-        {:ok, jwt, full_claims} = Guardian.Plug.sign_in(user, :token)
-
-        build_conn()
-        |> put_req_header("authorization", "Bearer #{jwt}")
-      end
-
       def guardian_login(%Plug.Conn{} = conn, user, opts \\ []) do
         conn
           |> bypass_through(Parma.Router, [:browser])
