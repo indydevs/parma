@@ -34,5 +34,6 @@ defmodule Parma.Router do
   scope "/repositories", Parma do
     pipe_through [:browser, :browser_auth]
     get "/", RepositoryController, :index
+    put "/:id", RepositoryController, :update
   end
 end

@@ -5,10 +5,10 @@
                 <li class="repo">
                     <div class="inline">
                         <%= repo.name %>
-                    </div>                    
+                    </div>
                     <%= if repo.admin == true do %>
                         <div class="pull-right">
-                            <input type="checkbox" data-toggle="toggle" data-size="small" data-on="Enabled" data-off="Disabled"/>
+                            <%= repository_switch_control(repo) %>
                         </div>
                     <% end %>
                 </li>

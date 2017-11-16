@@ -10,13 +10,13 @@ defmodule Parma.RepositoryServiceTest do
 
   describe "#enabled" do
     test "enables the repo and create hooks in remote repo" do
-      mock_response = Poison.encode!(%{id: 101, owner: "owner", name: "name"})
+      mock_response = {200, %{"id" => 101}}
       hook_body = %{
-        "name" => Application.get_env(:parma, :app_name),
+        "name" => "web",
         "active" => true,
         "events" => [ "push", "pull_request" ],
         "config" => %{
-          "url" => Application.get_env(:parma, Mix.env)["webhook_callback"],
+          "url" => Application.get_env(:parma, Mix.env) |> Map.get(:webhook_callback),
           "content_type" => "json"
         }
       }

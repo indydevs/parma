@@ -20,4 +20,4 @@ import "phoenix_html"
 
 // import socket from "./socket"
 
-import "./bootstrap-toggle.min"
+// import "./bootstrap-toggle.min"

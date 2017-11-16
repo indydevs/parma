@@ -9,9 +9,7 @@ defmodule Parma.RepositoryService do
   def enable(%Repository{} = repository, %User{} = user) do
     owner = get_repo_owner(repository)
 
-    response =
-      create_hook(owner, repository.name, user)
-      |> Poison.decode!
+    {_status, response} = create_hook(owner, repository.name, user)
 
     Repository.update(repository, %{enabled: true, hook_id: response|> Map.get("id") |> to_string})
   end
@@ -52,11 +50,11 @@ defmodule Parma.RepositoryService do
 
   defp hook_body do
     %{
-      "name" => Application.get_env(:parma, :app_name),
+      "name" => "web",
       "active" => true,
       "events" => [ "push", "pull_request" ],
       "config" => %{
-        "url" => Application.get_env(:parma, Mix.env)["webhook_callback"],
+        "url" => Application.get_env(:parma, Mix.env) |> Map.get(:webhook_callback),
         "content_type" => "json"
       }
     }
