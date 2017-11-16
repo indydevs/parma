@@ -23,6 +23,8 @@ defmodule Parma.Web do
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
+
+      alias Parma.Repo
     end
   end
 

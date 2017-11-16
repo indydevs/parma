@@ -24,6 +24,17 @@ defmodule Parma.Factory do
         }
     end
 
+    def authorization_factory do
+        %Parma.Authorization{
+            user: build(:user),
+            provider: "github",
+            uid: sequence(:uid, &"uid-#{&1}"),
+            token: SecureRandom.base64(16),
+            refresh_token: SecureRandom.base64(16),
+            expires_at: DateTime.utc_now |> DateTime.to_unix
+        }
+    end
+
     def user_with_repositories(repo_count \\ 2, opts \\ []) do
         opts = opts ++ [repositories: build_list(repo_count, :repository)]
         insert(:user, opts)

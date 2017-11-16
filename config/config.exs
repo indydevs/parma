@@ -11,7 +11,8 @@ environment_config = Application.get_env(:parma, String.to_atom("#{Mix.env}"))
 
 # General application configuration
 config :parma,
-  ecto_repos: [Parma.Repo]
+  ecto_repos: [Parma.Repo],
+  app_name: "parma hook"
 
 # Configures the endpoint
 config :parma, Parma.Endpoint,
