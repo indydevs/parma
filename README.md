@@ -1,10 +1,13 @@
 ![parma logo](https://cldup.com/8ULBQyooFe.png)
 
+[![Build Status](https://travis-ci.org/indydevs/parma.svg?branch=master)](https://travis-ci.org/indydevs/parma)
+[![Coverage Status](https://coveralls.io/repos/github/indydevs/parma/badge.svg)](https://coveralls.io/github/indydevs/parma)
+
 ## Installation
 
 ### Elixir
 
-At the time of writing, Elixir 1.5.0 was the latest. Unfortunately, homebrew only has the latest version of 
+At the time of writing, Elixir 1.5.0 was the latest. Unfortunately, homebrew only has the latest version of
 Elixir. If the latest is not `1.5.0` then please [install Elixir from source](https://elixir-lang.org/install.html#compiling-from-source-unix-and-mingw)
 
 ```
@@ -38,10 +41,10 @@ $ mix local.hex
 
 ### Github Setup
 
-* [Create a github oauth application](https://github.com/settings/applications/new) 
+* [Create a github oauth application](https://github.com/settings/applications/new)
 * Use `http://localhost:4000/` as your **Authorization callback URL**
 * Once done, copy the `client_id` and `client_secret` and paste it in `config/application.exs`
-  
+
 ### Start Server
 Start Phoenix endpoint with `mix phoenix.server`
 
