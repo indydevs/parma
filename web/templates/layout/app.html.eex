@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
+  <meta name="csrf" content="<%= Plug.CSRFProtection.get_csrf_token() %>">
 
   <title>Parma</title>
   <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
 </head>
 
-<body>
-
+<body class="has-navbar">
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -22,8 +22,8 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">
-        Get Parma
+      <a class="navbar-brand" href="/">
+        <img src="/images/logo.png" alt="Parma" title="Parma" />
       </a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -40,7 +40,7 @@
   </div>
 </nav>
 
-<div class="container">
+<div class="container navbar-margin">
   <header class="header">
     <% if get_flash(@conn, :info) do %>
         <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
@@ -56,5 +56,6 @@
 
 </div> <!-- /container -->
 <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+<%= render_existing @view_module, "scripts." <> @view_template, assigns %>
 </body>
 </html>

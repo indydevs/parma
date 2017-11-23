@@ -2,7 +2,6 @@ defmodule Parma.User do
   use Parma.Web, :model
 
   @primary_key {:id, :binary_id, autogenerate: true}
-  @foreign_key_type :binary_id
   schema "users" do
     field :name, :string
     field :email, :string
@@ -14,7 +13,6 @@ defmodule Parma.User do
   end
 
   @required_fields ~w(email name)a
-  @optional_fields ~w()a
 
   def registration_changeset(model, params \\ :empty) do
     user = model

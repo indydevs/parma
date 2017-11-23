@@ -27,7 +27,7 @@ defmodule Parma.AuthController do
         conn
         |> put_flash(:info, "Signed in as #{user.name}")
         |> Guardian.Plug.sign_in(user, :access, perms: %{default: Guardian.Permissions.max})
-        |> redirect(to: page_path(conn, :index))
+        |> redirect(to: repository_path(conn, :index))
       {:error, reason} ->
         conn
         |> put_flash(:error, "Could not authenticate. Error: #{reason}")
@@ -54,7 +54,7 @@ defmodule Parma.AuthController do
 
   defp auths(nil), do: []
   defp auths(%Parma.User{} = user) do
-    Ecto.Model.assoc(user, :authorizations)
+    Ecto.assoc(user, :authorizations)
       |> Repo.all
       |> Enum.map(&(&1.provider))
   end

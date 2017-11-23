@@ -15,24 +15,28 @@ defmodule UserInitialization do
     application_id = Repo.get_by(Application, name: "github").id
     source_id = Integer.to_string(data["id"])
     query = from r in Repository,
-            where: r.application_id == ^application_id and r.source_id == ^source_id
-    repository = Repo.one(query)
-    if !repository do
-      {_, repository} = Repo.insert(
-        Repository.changeset(
-          %Repository{},
-          %{name: data["name"], application_id: application_id, source_id: source_id, meta: data }
-        )
-      )
-    end
+            where: r.application_id == ^application_id and r.source_id == ^source_id    
+
+    repository = 
+      case Repo.one(query) do
+        nil -> 
+          insert_params = %{name: data["name"], application_id: application_id, source_id: source_id, meta: data}
+          %Repository{}
+          |> Repository.changeset(insert_params)
+          |> Repo.insert!()
+        record -> record
+      end
+    
     create_user_repository(repository, user)
   end
 
   def create_user_repository(repository, user) do
-    changeset = repository
-    |> Repo.preload(:users)
-    |> Repository.changeset(%{})
-    |> Ecto.Changeset.put_assoc(:users, [user])
+    changeset = 
+      repository
+      |> Repo.preload(:users)
+      |> Repository.changeset(%{})
+      |> Ecto.Changeset.put_assoc(:users, [user])
+
     Repo.update!(changeset)
   end
 end

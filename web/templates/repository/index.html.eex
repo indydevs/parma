@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <ul class="col-md-6 col-xs-10 no-list">
+            <%= for repo <- repositories(@user_repositories) do %>
+                <li class="repo">
+                    <div class="inline">
+                        <%= repo.name %>
+                    </div>
+                    <%= if repo.admin == true do %>
+                        <div class="pull-right">
+                            <%= repository_switch_control(repo) %>
+                        </div>
+                    <% end %>
+                </li>
+            <% end %>
+        </div>
+    </div>
+</div>

@@ -2,11 +2,10 @@
   <h3>Github user</h3>
   <h4><%= @current_user.name %></h4>
   <h4>e-mail: <%= @current_user.email %></h4>
-  <h4>Repositories:</h4>
-  <ul>
-  <%= for repo <- @current_user.repositories do %>
-    <li><%=repo.meta["owner"]["login"]%>/<%= repo.name %></li>
-  <% end %>
-  </ul>
+  <div>
+    <a class="btn btn-info" href="<%= repository_path(@conn, :index) %>" title="Repositories">
+      My Repositories
+    </a>
+  </div>
 </div>
 

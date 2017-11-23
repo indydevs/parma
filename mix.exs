@@ -38,7 +38,7 @@ defmodule Parma.Mixfile do
      {:phoenix, "~> 1.2.1"},
      {:phoenix_pubsub, "~> 1.0"},
      {:phoenix_ecto, "~> 3.2", override: true},
-     {:guardian, "~> 0.14.0"},     
+     {:guardian, "~> 0.14.0"},
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:postgrex, "~> 0.13.3"},
@@ -49,7 +49,12 @@ defmodule Parma.Mixfile do
      {:cowboy, "~> 1.0"},
      {:exredis, ">= 0.1.1"},
      {:toniq, "~> 1.0"},
+     {:poison, "~> 2.0"},
+     {:secure_random, "~> 0.5"},
      {:excoveralls, "~> 0.5", only: :test},
+     {:ex_machina, "~> 2.1", only: :test},
+     {:faker, "~> 0.9", only: :test},
+     {:mock, "~> 0.2.0", only: :test}
     ]
   end
 
