@@ -32,7 +32,7 @@ $ mix local.hex
 
 ### App
 
-* Copy the application sample file `cp config/application.exs.sample application.exs`
+* Copy the application sample file `cp config/application.exs{.sample,}`
 * Configure your database credentials in `config/application.exs`
 * Install dependencies with `mix deps.get`
 * Create, migrate and seed your database with `mix ecto.setup`
