@@ -25,4 +25,9 @@ erl_crash.dump
 /config/prod.secret.exs
 /config/application.exs
 
+
+# IDE files
+/.idea
+
+# node/webpack
 package-lock.json
